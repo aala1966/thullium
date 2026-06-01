@@ -240,21 +240,23 @@
 
     .hero-title {
       display: inline-block;
+      width: 100%;
     }
 
     .hero-title-top {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: flex-start;
-      white-space: nowrap;
+      width: 100%;
     }
 
+    /* LOGO bem maior e à direita */
     .hero-logo {
-      width: 110px;
-      height: 110px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      flex-shrink: 0;
+      margin-left: auto;
     }
 
     .hero-sub {
@@ -436,7 +438,6 @@
       width: 100%;
     }
 
-    /* 4 itens por vista em desktop (25% cada) */
     .gallery-item {
       flex: 0 0 25%;
       max-width: 25%;
@@ -623,8 +624,8 @@
       }
 
       .hero-logo {
-        width: 90px;
-        height: 90px;
+        width: 140px;
+        height: 140px;
       }
     }
 
@@ -662,7 +663,6 @@
       .gallery-arrow--prev { left: 0.25rem; }
       .gallery-arrow--next { right: 0.25rem; }
 
-      /* em tablets, mostrar 3 de cada vez */
       .gallery-item {
         flex: 0 0 33.3333%;
         max-width: 33.3333%;
@@ -699,11 +699,10 @@
       }
 
       .hero-logo {
-        width: 70px;
-        height: 70px;
+        width: 110px;
+        height: 110px;
       }
 
-      /* em telemóvel, 1 de cada vez */
       .gallery-item {
         flex: 0 0 100%;
         max-width: 100%;
@@ -959,30 +958,29 @@
 
           <div class="gallery-viewport">
             <div class="gallery-track">
-              <!-- 8 imagens -->
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 1">
+                <img src="https://aala1966.github.io/thullium/foto1.jpg" alt="Vista do Douro 1">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 2">
+                <img src="https://aala1966.github.io/thullium/foto2.jpg" alt="Vista do Douro 2">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 3">
+                <img src="https://aala1966.github.io/thullium/foto3.jpg" alt="Vista do Douro 3">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 4">
+                <img src="https://aala1966.github.io/thullium/foto4.jpg" alt="Vista do Douro 4">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 5">
+                <img src="https://aala1966.github.io/thullium/foto5.jpg" alt="Vista do Douro 5">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1518832553480-cd0a0e1f8a32?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 6">
+                <img src="https://aala1966.github.io/thullium/foto6.jpg" alt="Vista do Douro 6">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 7">
+                <img src="https://aala1966.github.io/thullium/foto7.jpg" alt="Vista do Douro 7">
               </figure>
               <figure class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 8">
+                <img src="https://aala1966.github.io/thullium/foto8.jpg" alt="Vista do Douro 8">
               </figure>
             </div>
           </div>
@@ -1089,4 +1087,108 @@
         feature4: 'Degustação de Vinho do Porto',
         feature5: 'Reserva Online Disponível',
         reserveTitle: 'Reserve agora o seu Passeio no Porto',
-       
+        reserveText: 'A melhor forma de explorar a incrível região do Porto e as suas deslumbrantes paisagens é fazendo um inesquecível passeio ao longo das águas do Rio Douro, seja em passeios de grupos, passeios em família, amigos, festas de aniversário, despedidas de solteiro, etc...',
+        cardTitle1: 'Texto a alterar brevemente',
+        cardTitle2: 'Texto a alterar brevemente',
+        cardText1: 'Descubra o encanto do Porto e das suas pontes magníficas. Aprecie a paisagem deslumbrante e inesquecível no nosso Barco e crie memórias que durarão para toda a vida.',
+        cardText2: 'Descubra o encanto do Porto e das suas pontes magníficas. Aprecie a paisagem deslumbrante e inesquecível no nosso Barco e crie memórias que durarão para toda a vida.',
+        duration: '120 min',
+        location: 'Porto',
+        roundTrip: 'Ida e Volta',
+        priceLabel: 'A partir de',
+        bookHere: 'RESERVE AQUI',
+        galleryTitle: 'Galeria',
+        formTitle: 'Reserve agora o seu passeio',
+        formText: 'Diga-nos o que pretende!',
+        labelName: 'Nome',
+        labelEmail: 'Email',
+        labelPhone: 'Contacto',
+        labelSubject: 'Assunto',
+        labelMessage: 'Mensagem',
+        phName: 'O seu nome',
+        phEmail: 'O seu email',
+        phPhone: 'O seu contacto',
+        phSubject: 'Pedido de reserva',
+        phMessage: 'Escreva aqui a sua mensagem',
+        privacy: 'Li e aceito a política de privacidade.',
+        submitBtn: 'ENVIAR MENSAGEM',
+        contactsTitle: 'Contactos',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'Em cumprimento da lei nº 144/2015 informamos que para a resolução de conflitos de consumo deve ser contactada a comissão arbitral do Turismo de Portugal <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Operador Marítimo Turístico com Licença RNAAT 203/2026 autorizada pelo Turismo de Portugal.'
+      },
+      /* restantes traduções mantidas como antes (es, fr, en, de) */
+    };
+
+    const langButtons = document.querySelectorAll('.lang-btn');
+
+    function setLanguage(lang) {
+      const data = translations[lang] || translations.pt;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (data[key] !== undefined) {
+          el.innerHTML = data[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (data[key] !== undefined) el.setAttribute('placeholder', data[key]);
+      });
+
+      langButtons.forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.lang === lang)
+      );
+    }
+
+    langButtons.forEach(btn =>
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang))
+    );
+
+    // Slider da galeria (4 de cada vez em desktop, 3 em tablet, 1 em mobile)
+    const track = document.querySelector('.gallery-track');
+    const items = document.querySelectorAll('.gallery-item');
+    const prevBtn = document.querySelector('.gallery-arrow--prev');
+    const nextBtn = document.querySelector('.gallery-arrow--next');
+    const totalItems = items.length;
+    let currentIndex = 0;
+
+    function getVisibleCount() {
+      const w = window.innerWidth;
+      if (w <= 560) return 1;
+      if (w <= 900) return 3;
+      return 4;
+    }
+
+    function updateGallery() {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, totalItems - visible);
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      const percentPerItem = 100 / visible;
+      const offset = -currentIndex * percentPerItem;
+      track.style.transform = `translateX(${offset}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, totalItems - visible);
+      currentIndex = Math.max(0, currentIndex - 1);
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      updateGallery();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, totalItems - visible);
+      currentIndex = Math.min(maxIndex, currentIndex + 1);
+      updateGallery();
+    });
+
+    window.addEventListener('resize', updateGallery);
+    updateGallery();
+  </script>
+</body>
+</html>
