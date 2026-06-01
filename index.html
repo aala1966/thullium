@@ -420,18 +420,58 @@
       font-weight: 800;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+    /* Galeria com slider */
+    .gallery-wrapper {
+      position: relative;
     }
 
-    .gallery-grid img {
+    .gallery-viewport {
+      overflow: hidden;
+      border-radius: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      width: 100%;
+    }
+
+    .gallery-item {
+      min-width: 100%;
+      flex: 0 0 100%;
+    }
+
+    .gallery-item img {
       width: 100%;
       height: 255px;
       object-fit: cover;
-      border-radius: 1.4rem;
-      box-shadow: var(--shadow-sm);
+      display: block;
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 8px 20px rgba(15,23,42,0.15);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #111827;
+    }
+
+    .gallery-arrow--prev { left: -0.75rem; }
+    .gallery-arrow--next { right: -0.75rem; }
+
+    .gallery-arrow svg {
+      width: 18px;
+      height: 18px;
     }
 
     .contact-wrap {
@@ -581,10 +621,6 @@
       .features {
         grid-template-columns: repeat(3, 1fr);
       }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @media (max-width: 900px) {
@@ -617,11 +653,13 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .gallery-arrow--prev { left: 0.25rem; }
+      .gallery-arrow--next { right: 0.25rem; }
     }
 
     @media (max-width: 560px) {
-      .features,
-      .gallery-grid {
+      .features {
         grid-template-columns: 1fr;
       }
 
@@ -733,8 +771,7 @@
 
           <h1 class="hero-title">
             <span class="hero-title-top">
-              <!-- Substitui logo-thullium.jpg pelo ficheiro do logo no teu servidor -->
-              <img class="hero-logo" src="logo-thullium.jpg" alt="Logotipo THULLIUM SAILBOAT">
+              <img class="hero-logo" src="https://aala1966.github.io/thullium/logotulio.jpg" alt="Logotipo THULLIUM SAILBOAT">
             </span>
             <span class="hero-sub" data-i18n="heroSubText">Passeios no Douro</span>
           </h1>
@@ -889,17 +926,55 @@
       </div>
     </section>
 
-    <!-- Galeria -->
+    <!-- Galeria com slider -->
     <section class="section">
       <div class="container">
         <div class="section-heading">
           <h2 data-i18n="galleryTitle">Galeria</h2>
         </div>
-        <div class="gallery-grid">
-          <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Paisagem temporária do Porto com ponte" width="1200" height="800" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Vista temporária de ponte no Porto" width="1200" height="800" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Paisagem temporária repetida do Porto" width="1200" height="800" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Vista temporária repetida de ponte no Porto" width="1200" height="800" loading="lazy">
+
+        <div class="gallery-wrapper">
+          <button class="gallery-arrow gallery-arrow--prev" type="button" aria-label="Imagem anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <div class="gallery-viewport">
+            <div class="gallery-track">
+              <!-- 8 imagens (podes trocar URLs depois) -->
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 1">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 2">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 3">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 4">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 5">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518832553480-cd0a0e1f8a32?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 6">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 7">
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="Vista do Douro 8">
+              </figure>
+            </div>
+          </div>
+
+          <button class="gallery-arrow gallery-arrow--next" type="button" aria-label="Imagem seguinte">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M9 6l6 6-6 6"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -980,7 +1055,7 @@
     </div>
   </footer>
 
-  <!-- Traduções e troca de idioma -->
+  <!-- Traduções e troca de idioma + slider -->
   <script>
     const translations = {
       pt: {
@@ -1236,6 +1311,29 @@
     langButtons.forEach(btn =>
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang))
     );
+
+    // Slider da galeria (JavaScript simples)
+    const track = document.querySelector('.gallery-track');
+    const items = document.querySelectorAll('.gallery-item');
+    const prevBtn = document.querySelector('.gallery-arrow--prev');
+    const nextBtn = document.querySelector('.gallery-arrow--next');
+    let currentIndex = 0;
+    const total = items.length;
+
+    function updateGallery() {
+      const offset = -currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateGallery();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % total;
+      updateGallery();
+    });
   </script>
 </body>
 </html>
