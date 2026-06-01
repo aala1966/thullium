@@ -111,6 +111,7 @@
       box-shadow: var(--shadow-sm);
       border-radius: 999px;
       min-height: 44px;
+      cursor: pointer;
     }
 
     .lang-btn {
@@ -120,7 +121,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      cursor: pointer;
       transition: transform .18s ease, border-color .18s ease;
     }
 
@@ -215,18 +215,6 @@
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      color: var(--color-accent);
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
     h1, h2, h3 {
       font-family: var(--font-display);
       line-height: 1.08;
@@ -239,32 +227,34 @@
     }
 
     .hero-title {
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
     }
 
     .hero-title-top {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       width: 100%;
     }
 
-    /* LOGO bem maior e à direita */
     .hero-logo {
-      width: 180px;
-      height: 180px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
       object-fit: cover;
-      margin-left: auto;
     }
 
     .hero-sub {
       display: block;
-      margin-top: 0.6rem;
-      font-size: 0.8em;
+      margin-top: 0.8rem;
+      font-size: 0.9em;
       color: var(--color-logo-main);
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     h2 {
@@ -421,7 +411,7 @@
       font-weight: 800;
     }
 
-    /* Galeria com 4 visíveis */
+    /* Galeria */
     .gallery-wrapper {
       position: relative;
     }
@@ -458,17 +448,18 @@
       height: 40px;
       border-radius: 999px;
       border: 0;
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 8px 20px rgba(15,23,42,0.15);
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 8px 20px rgba(15,23,42,0.25);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       color: #111827;
+      z-index: 5;
     }
 
-    .gallery-arrow--prev { left: -0.75rem; }
-    .gallery-arrow--next { right: -0.75rem; }
+    .gallery-arrow--prev { left: 0.4rem; }
+    .gallery-arrow--next { right: 0.4rem; }
 
     .gallery-arrow svg {
       width: 18px;
@@ -619,13 +610,10 @@
     }
 
     @media (max-width: 1100px) {
-      .features {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
+      .features { grid-template-columns: repeat(3, 1fr); }
       .hero-logo {
-        width: 140px;
-        height: 140px;
+        width: 200px;
+        height: 200px;
       }
     }
 
@@ -638,17 +626,11 @@
         grid-template-columns: 1fr;
       }
 
-      .topbar-inner {
-        display: grid;
-      }
+      .topbar-inner { display: grid; }
 
-      .right-tools {
-        justify-content: flex-start;
-      }
+      .right-tools { justify-content: flex-start; }
 
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .features { grid-template-columns: repeat(2, 1fr); }
 
       .hero-image img,
       .contact-image img {
@@ -660,27 +642,23 @@
         align-items: flex-start;
       }
 
-      .gallery-arrow--prev { left: 0.25rem; }
-      .gallery-arrow--next { right: 0.25rem; }
+      .gallery-arrow--prev { left: 0.4rem; }
+      .gallery-arrow--next { right: 0.4rem; }
 
       .gallery-item {
         flex: 0 0 33.3333%;
         max-width: 33.3333%;
       }
+
+      .hero-title { margin-bottom: 1rem; }
     }
 
     @media (max-width: 560px) {
-      .features {
-        grid-template-columns: 1fr;
-      }
+      .features { grid-template-columns: 1fr; }
 
-      .lang-group {
-        flex-wrap: wrap;
-      }
+      .lang-group { flex-wrap: wrap; }
 
-      .right-tools {
-        gap: 0.6rem;
-      }
+      .right-tools { gap: 0.6rem; }
 
       .phone-chip,
       .reserve-btn {
@@ -688,9 +666,7 @@
         justify-content: center;
       }
 
-      .contact-card {
-        padding: 1.35rem;
-      }
+      .contact-card { padding: 1.35rem; }
 
       .hero-badge {
         position: static;
@@ -699,8 +675,8 @@
       }
 
       .hero-logo {
-        width: 110px;
-        height: 110px;
+        width: 130px;
+        height: 130px;
       }
 
       .gallery-item {
@@ -783,8 +759,6 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow" data-i18n="eyebrow">Passeios diários</div>
-
           <h1 class="hero-title">
             <span class="hero-title-top">
               <img class="hero-logo" src="https://aala1966.github.io/thullium/logotulio.jpg" alt="Logotipo THULLIUM SAILBOAT">
@@ -1075,7 +1049,6 @@
     const translations = {
       pt: {
         reserveBtn: 'Reservar',
-        eyebrow: 'Passeios diários',
         heroSubText: 'Passeios no Douro',
         heroP1: 'Diariamente: Descubra o Encanto do Douro!',
         heroP2: 'O Alto Douro Vinhateiro, classificado como Património da Humanidade pela UNESCO, ostenta mais de dois milénios de história na produção vinícola, dando origem ao mundialmente reconhecido Vinho do Porto.',
@@ -1118,7 +1091,182 @@
         legal1: 'Em cumprimento da lei nº 144/2015 informamos que para a resolução de conflitos de consumo deve ser contactada a comissão arbitral do Turismo de Portugal <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
         legal2: 'Operador Marítimo Turístico com Licença RNAAT 203/2026 autorizada pelo Turismo de Portugal.'
       },
-      /* restantes traduções mantidas como antes (es, fr, en, de) */
+      es: {
+        reserveBtn: 'Reservar',
+        heroSubText: 'Paseos por el Duero',
+        heroP1: 'A diario: ¡Descubra el encanto del Duero!',
+        heroP2: 'El Alto Duero Vinhateiro, clasificado como Patrimonio de la Humanidad por la UNESCO, presume de más de dos mil años de historia en la producción vinícola, dando origen al mundialmente conocido vino de Oporto.',
+        heroP3: 'Con 30 años de historia y experiencia, le invitamos a explorar la grandeza de esta región a bordo de nuestro encantador barco y vivir una experiencia inolvidable.',
+        heroBadge: 'Experiencias pensadas para familias, grupos de amigos y momentos especiales en el Duero.',
+        feature1: 'Descubra Oporto y el Duero',
+        feature2: 'Barco tradicional',
+        feature3: 'Se permiten mascotas',
+        feature4: 'Degustación de vino de Oporto',
+        feature5: 'Reserva online disponible',
+        reserveTitle: 'Reserve ahora su paseo en Oporto',
+        reserveText: 'La mejor manera de explorar la increíble región de Oporto y sus deslumbrantes paisajes es realizando un inolvidable paseo por las aguas del río Duero, ya sea en grupos, en familia, con amigos, fiestas de cumpleaños, despedidas de soltero, etc.',
+        cardTitle1: 'Texto que se modificará en breve',
+        cardTitle2: 'Texto que se modificará en breve',
+        cardText1: 'Descubra el encanto de Oporto y de sus magníficos puentes. Disfrute del paisaje deslumbrante e inolvidable en nuestro barco y cree recuerdos para toda la vida.',
+        cardText2: 'Descubra el encanto de Oporto y de sus magníficos puentes. Disfrute del paisaje deslumbrante e inolvidable en nuestro barco y cree recuerdos para toda la vida.',
+        duration: '120 min',
+        location: 'Oporto',
+        roundTrip: 'Ida y vuelta',
+        priceLabel: 'Desde',
+        bookHere: 'RESERVE AQUÍ',
+        galleryTitle: 'Galería',
+        formTitle: 'Reserve ahora su paseo',
+        formText: '¡Cuéntenos qué desea!',
+        labelName: 'Nombre',
+        labelEmail: 'Correo electrónico',
+        labelPhone: 'Contacto',
+        labelSubject: 'Asunto',
+        labelMessage: 'Mensaje',
+        phName: 'Su nombre',
+        phEmail: 'Su correo electrónico',
+        phPhone: 'Su contacto',
+        phSubject: 'Solicitud de reserva',
+        phMessage: 'Escriba aquí su mensaje',
+        privacy: 'He leído y acepto la política de privacidad.',
+        submitBtn: 'ENVIAR MENSAJE',
+        contactsTitle: 'Contactos',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Oporto - Portugal',
+        legal1: 'En cumplimiento de la ley nº 144/2015 informamos de que para la resolución de conflictos de consumo debe contactarse con la comisión arbitral de Turismo de Portugal <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Operador marítimo turístico con licencia RNAAT 203/2026 autorizada por Turismo de Portugal.'
+      },
+      fr: {
+        reserveBtn: 'Réserver',
+        heroSubText: 'Balades sur le Douro',
+        heroP1: 'Chaque jour : découvrez le charme du Douro !',
+        heroP2: 'Le Haut-Douro viticole, classé au patrimoine mondial de l’UNESCO, possède plus de deux millénaires d’histoire dans la production de vin, à l’origine du célèbre vin de Porto.',
+        heroP3: 'Avec 30 ans d’histoire et d’expérience, nous vous invitons à explorer la grandeur de cette région à bord de notre bateau plein de charme et à vivre une expérience inoubliable.',
+        heroBadge: 'Des expériences pensées pour les familles, les groupes d’amis et les moments spéciaux sur le Douro.',
+        feature1: 'À la découverte de Porto et du Douro',
+        feature2: 'Bateau traditionnel',
+        feature3: 'Animaux autorisés',
+        feature4: 'Dégustation de vin de Porto',
+        feature5: 'Réservation en ligne disponible',
+        reserveTitle: 'Réservez dès maintenant votre balade à Porto',
+        reserveText: 'La meilleure façon de découvrir l’incroyable région de Porto et ses paysages magnifiques est de faire une balade inoubliable sur les eaux du Douro, en groupe, en famille, entre amis, pour un anniversaire, un enterrement de vie de célibataire, etc.',
+        cardTitle1: 'Texte à modifier prochainement',
+        cardTitle2: 'Texte à modifier prochainement',
+        cardText1: 'Découvrez le charme de Porto et de ses magnifiques ponts. Admirez un paysage superbe et inoubliable à bord de notre bateau et créez des souvenirs pour toute la vie.',
+        cardText2: 'Découvrez le charme de Porto et de ses magnifiques ponts. Admirez un paysage superbe et inoubliable à bord de notre bateau et créez des souvenirs pour toute la vie.',
+        duration: '120 min',
+        location: 'Porto',
+        roundTrip: 'Aller-retour',
+        priceLabel: 'À partir de',
+        bookHere: 'RÉSERVER ICI',
+        galleryTitle: 'Galerie',
+        formTitle: 'Réservez dès maintenant votre balade',
+        formText: 'Dites-nous ce que vous souhaitez !',
+        labelName: 'Nom',
+        labelEmail: 'Email',
+        labelPhone: 'Contact',
+        labelSubject: 'Sujet',
+        labelMessage: 'Message',
+        phName: 'Votre nom',
+        phEmail: 'Votre email',
+        phPhone: 'Votre contact',
+        phSubject: 'Demande de réservation',
+        phMessage: 'Écrivez votre message ici',
+        privacy: 'J’ai lu et j’accepte la politique de confidentialité.',
+        submitBtn: 'ENVOYER LE MESSAGE',
+        contactsTitle: 'Contacts',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'Conformément à la loi nº 144/2015, nous informons que pour la résolution des litiges de consommation, la commission arbitrale de Turismo de Portugal doit être contactée <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Opérateur maritime touristique avec licence RNAAT 203/2026 autorisée par Turismo de Portugal.'
+      },
+      en: {
+        reserveBtn: 'Book now',
+        heroSubText: 'Douro boat tours',
+        heroP1: 'Every day: discover the charm of the Douro!',
+        heroP2: 'The Alto Douro Wine Region, classified as a UNESCO World Heritage Site, boasts more than two millennia of wine-making history and gave birth to the world-famous Port Wine.',
+        heroP3: 'With 30 years of history and experience, we invite you to explore the grandeur of this region aboard our charming boat and enjoy an unforgettable experience.',
+        heroBadge: 'Experiences designed for families, groups of friends and special moments on the Douro.',
+        feature1: 'Discover Porto and the Douro',
+        feature2: 'Traditional boat',
+        feature3: 'Pets allowed',
+        feature4: 'Port wine tasting',
+        feature5: 'Online booking available',
+        reserveTitle: 'Book your Porto tour now',
+        reserveText: 'The best way to explore the incredible Porto region and its stunning landscapes is by taking an unforgettable trip along the waters of the Douro River, whether for groups, families, friends, birthday parties, bachelor or bachelorette events, and more.',
+        cardTitle1: 'Text to be updated soon',
+        cardTitle2: 'Text to be updated soon',
+        cardText1: 'Discover the charm of Porto and its magnificent bridges. Enjoy the breathtaking and unforgettable scenery on our boat and create memories that will last a lifetime.',
+        cardText2: 'Discover the charm of Porto and its magnificent bridges. Enjoy the breathtaking and unforgettable scenery on our boat and create memories that will last a lifetime.',
+        duration: '120 min',
+        location: 'Porto',
+        roundTrip: 'Round trip',
+        priceLabel: 'From',
+        bookHere: 'BOOK HERE',
+        galleryTitle: 'Gallery',
+        formTitle: 'Book your tour now',
+        formText: 'Tell us what you are looking for!',
+        labelName: 'Name',
+        labelEmail: 'Email',
+        labelPhone: 'Phone',
+        labelSubject: 'Subject',
+        labelMessage: 'Message',
+        phName: 'Your name',
+        phEmail: 'Your email',
+        phPhone: 'Your phone',
+        phSubject: 'Booking request',
+        phMessage: 'Write your message here',
+        privacy: 'I have read and accept the privacy policy.',
+        submitBtn: 'SEND MESSAGE',
+        contactsTitle: 'Contacts',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'In compliance with law no. 144/2015, we inform you that for consumer dispute resolution the arbitration commission of Turismo de Portugal should be contacted at <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Tourist maritime operator with RNAAT license 203/2026 authorized by Turismo de Portugal.'
+      },
+      de: {
+        reserveBtn: 'Jetzt buchen',
+        heroSubText: 'Douro-Bootstouren',
+        heroP1: 'Täglich: Entdecken Sie den Charme des Douro!',
+        heroP2: 'Das Weinbaugebiet Alto Douro, das von der UNESCO zum Weltkulturerbe erklärt wurde, blickt auf mehr als zwei Jahrtausende Weintradition zurück und ist die Heimat des weltberühmten Portweins.',
+        heroP3: 'Mit 30 Jahren Geschichte und Erfahrung laden wir Sie ein, die Größe dieser Region an Bord unseres charmanten Bootes zu entdecken und ein unvergessliches Erlebnis zu genießen.',
+        heroBadge: 'Erlebnisse für Familien, Freundesgruppen und besondere Momente auf dem Douro.',
+        feature1: 'Porto und den Douro entdecken',
+        feature2: 'Traditionelles Boot',
+        feature3: 'Haustiere erlaubt',
+        feature4: 'Portwein-Verkostung',
+        feature5: 'Online-Reservierung verfügbar',
+        reserveTitle: 'Buchen Sie jetzt Ihre Fahrt in Porto',
+        reserveText: 'Die beste Art, die unglaubliche Region Porto und ihre atemberaubenden Landschaften zu entdecken, ist eine unvergessliche Fahrt auf dem Douro, ob in Gruppen, mit der Familie, mit Freunden, bei Geburtstagsfeiern, Junggesellenabschieden und mehr.',
+        cardTitle1: 'Text wird in Kürze angepasst',
+        cardTitle2: 'Text wird in Kürze angepasst',
+        cardText1: 'Entdecken Sie den Charme von Porto und seine großartigen Brücken. Genießen Sie die beeindruckende und unvergessliche Landschaft an Bord unseres Bootes und schaffen Sie Erinnerungen fürs Leben.',
+        cardText2: 'Entdecken Sie den Charme von Porto und seine großartigen Brücken. Genießen Sie die beeindruckende und unvergessliche Landschaft an Bord unseres Bootes und schaffen Sie Erinnerungen fürs Leben.',
+        duration: '120 Min.',
+        location: 'Porto',
+        roundTrip: 'Hin und zurück',
+        priceLabel: 'Ab',
+        bookHere: 'HIER BUCHEN',
+        galleryTitle: 'Galerie',
+        formTitle: 'Buchen Sie jetzt Ihre Fahrt',
+        formText: 'Sagen Sie uns, was Sie sich wünschen!',
+        labelName: 'Name',
+        labelEmail: 'E-Mail',
+        labelPhone: 'Kontakt',
+        labelSubject: 'Betreff',
+        labelMessage: 'Nachricht',
+        phName: 'Ihr Name',
+        phEmail: 'Ihre E-Mail',
+        phPhone: 'Ihr Kontakt',
+        phSubject: 'Buchungsanfrage',
+        phMessage: 'Schreiben Sie hier Ihre Nachricht',
+        privacy: 'Ich habe die Datenschutzrichtlinie gelesen und akzeptiere sie.',
+        submitBtn: 'NACHRICHT SENDEN',
+        contactsTitle: 'Kontakte',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'Gemäß Gesetz Nr. 144/2015 informieren wir darüber, dass zur Beilegung von Verbraucherstreitigkeiten die Schiedskommission von Turismo de Portugal kontaktiert werden sollte: <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Touristischer Schifffahrtsbetreiber mit RNAAT-Lizenz 203/2026, genehmigt von Turismo de Portugal.'
+      }
     };
 
     const langButtons = document.querySelectorAll('.lang-btn');
@@ -1148,7 +1296,7 @@
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang))
     );
 
-    // Slider da galeria (4 de cada vez em desktop, 3 em tablet, 1 em mobile)
+    // Slider da galeria (4 desktop, 3 tablet, 1 mobile)
     const track = document.querySelector('.gallery-track');
     const items = document.querySelectorAll('.gallery-item');
     const prevBtn = document.querySelector('.gallery-arrow--prev');
