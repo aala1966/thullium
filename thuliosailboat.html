@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THULLIUM SAILBOAT - Passeios no Douro</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bandeiras (flag-icons) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+
+  <style>
+    :root {
+      --text-sm: clamp(0.875rem, 0.82rem + 0.3vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.7vw, 1.45rem);
+      --text-xl: clamp(1.55rem, 1.2rem + 1.4vw, 2.5rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 3vw, 4.2rem);
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --shadow-sm: 0 10px 30px rgba(18, 34, 54, 0.08);
+      --shadow-md: 0 18px 50px rgba(18, 34, 54, 0.14);
+      --color-bg: #f7f2ea;
+      --color-surface: #ffffff;
+      --color-surface-soft: #fbf8f3;
+      --color-text: #1f2937;
+      --color-muted: #667085;
+      --color-primary: #1d5c78;
+      --color-primary-dark: #16465b;
+      --color-accent: #b98b55;
+      --color-logo-main: #144f5f;
+      --color-border: rgba(29, 50, 71, 0.1);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, rgba(185,139,85,0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(29,92,120,0.12), transparent 30%),
+        var(--color-bg);
+      line-height: 1.65;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 1.6rem));
+      margin-inline: auto;
+    }
+
+    /* Topo */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(247,242,234,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(29,50,71,0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      min-height: 82px;
+      padding: 0.6rem 0;
+    }
+
+    .lang-group,
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .lang-btn,
+    .icon-btn,
+    .phone-chip {
+      background: #fff;
+      border: 1px solid rgba(29,50,71,0.08);
+      box-shadow: var(--shadow-sm);
+      border-radius: 999px;
+      min-height: 44px;
+    }
+
+    .lang-btn {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      transform: translateY(-1px);
+      border-color: rgba(29,92,120,0.35);
+    }
+
+    .lang-btn .fi {
+      width: 24px;
+      height: 18px;
+      display: block;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+    }
+
+    .right-tools {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .icon-btn {
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      padding: 0 0.9rem;
+      gap: 0.4rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      border-radius: 999px;
+    }
+
+    .icon-btn svg {
+      flex-shrink: 0;
+    }
+
+    .icon-btn--whatsapp {
+      background: #ffffff;
+      border-color: rgba(0,0,0,0.08);
+      color: #1f2937;
+    }
+
+    .icon-btn--whatsapp svg path:first-child {
+      fill: #25D366;
+    }
+
+    .icon-btn--whatsapp:hover {
+      box-shadow: 0 0 0 3px rgba(37,211,102,0.18);
+    }
+
+    .phone-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0 0.95rem;
+      color: var(--color-text);
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+
+    .reserve-btn {
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: var(--text-sm);
+      font-weight: 800;
+      box-shadow: var(--shadow-sm);
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .reserve-btn:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(2rem, 4vw, 3.5rem) 0 var(--space-16);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    /* Eyebrow ("Passeios diários") maior */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--color-accent);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      line-height: 1.08;
+      color: #132536;
+    }
+
+    h1 {
+      font-size: var(--text-2xl);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      display: inline-block;
+    }
+
+    .hero-title-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      white-space: nowrap;
+    }
+
+    .hero-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .hero-sub {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.72em;
+      color: var(--color-logo-main);
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+    }
+
+    .hero-copy p + p { margin-top: 1rem; }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(29,50,71,0.08);
+      box-shadow: var(--shadow-sm);
+      border-radius: 1rem;
+      padding: 0.9rem 1rem;
+      max-width: 240px;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: #24384c;
+    }
+
+    /* Destaques */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(29,50,71,0.08);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .feature-item svg {
+      color: var(--color-primary);
+      flex: 0 0 auto;
+      margin-top: 0.05rem;
+    }
+
+    .feature-item span {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .section {
+      padding: var(--space-16) 0;
+    }
+
+    .section-heading {
+      max-width: 860px;
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--color-surface);
+      border-radius: 1.9rem;
+      overflow: hidden;
+      border: 1px solid rgba(29,50,71,0.06);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin: 1rem 0 1.15rem;
+      color: var(--color-muted);
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(29,50,71,0.08);
+    }
+
+    .price small {
+      display: block;
+      color: var(--color-muted);
+      font-size: var(--text-sm);
+    }
+
+    .price strong {
+      display: block;
+      font-size: 1.9rem;
+      color: #12263a;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef5f8;
+      color: var(--color-primary);
+      border-radius: 999px;
+      padding: 0.9rem 1.2rem;
+      font-size: var(--text-sm);
+      font-weight: 800;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 255px;
+      object-fit: cover;
+      border-radius: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .contact-image img {
+      width: 100%;
+      min-height: 640px;
+      object-fit: cover;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-card {
+      background: var(--color-surface);
+      border: 1px solid rgba(29,50,71,0.06);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-intro {
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: #12263a;
+      margin-top: 0.3rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.2rem;
+    }
+
+    .field,
+    .field-full {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: 800;
+      color: #26384a;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(29,50,71,0.12);
+      background: #fcfbf9;
+      border-radius: 1rem;
+      padding: 0.95rem 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(29,92,120,0.55);
+      box-shadow: 0 0 0 4px rgba(29,92,120,0.12);
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin: 1rem 0 1.3rem;
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+    }
+
+    .checkbox input {
+      width: 18px;
+      height: 18px;
+      margin-top: 0.15rem;
+    }
+
+    .submit-btn {
+      border: 0;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 999px;
+      padding: 1rem 1.45rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .footer {
+      padding: var(--space-16) 0 var(--space-12);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .contact-box {
+      max-width: 430px;
+      background: var(--color-surface);
+      border-radius: 1.6rem;
+      padding: 1.7rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-box h3 {
+      font-size: 1.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-box .whatsapp-footer {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .contact-box .whatsapp-footer svg {
+      flex-shrink: 0;
+    }
+
+    .legal {
+      max-width: 920px;
+      color: var(--color-muted);
+      font-size: var(--text-sm);
+    }
+
+    .legal p + p {
+      margin-top: 0.55rem;
+    }
+
+    @media (max-width: 1100px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .topbar-inner,
+      .hero-grid,
+      .cards,
+      .contact-wrap,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        display: grid;
+      }
+
+      .right-tools {
+        justify-content: flex-start;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-image img,
+      .contact-image img {
+        min-height: 360px;
+      }
+
+      .price-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .features,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lang-group {
+        flex-wrap: wrap;
+      }
+
+      .right-tools {
+        gap: 0.6rem;
+      }
+
+      .phone-chip,
+      .reserve-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .contact-card {
+        padding: 1.35rem;
+      }
+
+      .hero-badge {
+        position: static;
+        margin-top: 1rem;
+        max-width: none;
+      }
+
+      .hero-logo {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="lang-group" aria-label="Seleção de idioma">
+        <button class="lang-btn active" data-lang="pt" aria-label="Português">
+          <span class="fi fi-pt" aria-hidden="true"></span>
+        </button>
+        <button class="lang-btn" data-lang="es" aria-label="Español">
+          <span class="fi fi-es" aria-hidden="true"></span>
+        </button>
+        <button class="lang-btn" data-lang="fr" aria-label="Français">
+          <span class="fi fi-fr" aria-hidden="true"></span>
+        </button>
+        <button class="lang-btn" data-lang="en" aria-label="English">
+          <span class="fi fi-gb" aria-hidden="true"></span>
+        </button>
+        <button class="lang-btn" data-lang="de" aria-label="Deutsch">
+          <span class="fi fi-de" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="right-tools">
+        <div class="socials" aria-label="Redes sociais e contacto">
+          <a class="icon-btn" href="https://www.facebook.com/profile.php?id=61574958639564" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.093 10.125 24v-8.437H7.078v-3.49h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.493 0-1.956.93-1.956 1.887v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.093 24 18.1 24 12.073Z"/>
+            </svg>
+          </a>
+
+          <a class="icon-btn" href="https://www.instagram.com/thullium_sailboat/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <linearGradient id="ig-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f58529"/>
+                <stop offset="30%" stop-color="#feda77"/>
+                <stop offset="50%" stop-color="#dd2a7b"/>
+                <stop offset="70%" stop-color="#8134af"/>
+                <stop offset="100%" stop-color="#515bd4"/>
+              </linearGradient>
+              <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig-grad)"/>
+              <circle cx="12" cy="12" r="5.2" fill="none" stroke="#fff" stroke-width="2"/>
+              <circle cx="17.2" cy="6.8" r="1.4" fill="#fff"/>
+            </svg>
+          </a>
+
+          <a class="icon-btn icon-btn--whatsapp"
+             href="https://wa.me/351916814696"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="WhatsApp 916814696">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M16.04 3C9.4 3 4 8.4 4 15.03c0 2.59.76 4.99 2.08 7.02L4 29l7.16-2.03A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.6 28 14.97 28 8.34 22.68 3 16.04 3Z"/>
+              <path fill="#fff" d="M22.02 19.2c-.34-.17-2.01-1-2.32-1.12-.31-.11-.54-.17-.76.17-.23.34-.88 1.12-1.08 1.35-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.74-1.69-1.01-.9-1.69-2.01-1.89-2.35-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.02-.6-.09-.17-.76-1.83-1.04-2.51-.28-.67-.56-.58-.76-.58h-.65c-.23 0-.6.09-.91.43-.31.34-1.2 1.18-1.2 2.87 0 1.68 1.23 3.31 1.4 3.54.17.23 2.42 3.7 5.86 5.06.82.33 1.46.53 1.96.67.82.26 1.57.22 2.16.13.66-.1 2.01-.82 2.29-1.61.28-.79.28-1.47.2-1.61-.08-.14-.31-.23-.65-.4Z"/>
+            </svg>
+            <span>916814696</span>
+          </a>
+
+          <span class="phone-chip" aria-label="Telefone 916814696">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.62a2 2 0 0 1-.45 2.11L8.03 9.74a16 16 0 0 0 6.23 6.23l1.29-1.29a2 2 0 0 1 2.11-.45c.84.32 1.72.54 2.62.66A2 2 0 0 1 22 16.92Z"/>
+            </svg>
+            916814696
+          </span>
+        </div>
+        <a class="reserve-btn" href="#reserva" data-i18n="reserveBtn">Reservar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow" data-i18n="eyebrow">Passeios diários</div>
+
+          <h1 class="hero-title">
+            <span class="hero-title-top">
+              <!-- Substitui logo-thullium.jpg pelo ficheiro do logo no teu servidor -->
+              <img class="hero-logo" src="logo-thullium.jpg" alt="Logotipo THULLIUM SAILBOAT">
+            </span>
+            <span class="hero-sub" data-i18n="heroSubText">Passeios no Douro</span>
+          </h1>
+
+          <p data-i18n="heroP1">Diariamente: Descubra o Encanto do Douro!</p>
+          <p data-i18n="heroP2">O Alto Douro Vinhateiro, classificado como Património da Humanidade pela UNESCO, ostenta mais de dois milénios de história na produção vinícola, dando origem ao mundialmente reconhecido Vinho do Porto.</p>
+          <p data-i18n="heroP3">Com 30 anos de história e experiência, convidamo-lo a explorar a grandiosidade desta região a bordo do nosso barco encantador e viva uma experiência inesquecível!</p>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=80" alt="Paisagem do Douro para imagem principal temporária" width="1200" height="900" loading="eager">
+          <div class="hero-badge" data-i18n="heroBadge">Experiências pensadas para famílias, grupos de amigos e momentos especiais no Douro.</div>
+        </div>
+      </div>
+
+      <!-- Destaques -->
+      <div class="container">
+        <div class="features">
+          <div class="feature-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 20h18"/>
+              <path d="M5 20V10l7-6 7 6v10"/>
+            </svg>
+            <span data-i18n="feature1">Á descoberta do Porto e Douro</span>
+          </div>
+          <div class="feature-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 18c2.2 0 2.8-1.2 5-1.2s2.8 1.2 5 1.2 2.8-1.2 5-1.2 2.8 1.2 4 1.2"/>
+              <path d="M5 15h14l-2.2-5h-3.8V7.5l-2-1.2-2 1.2V10H7.2L5 15Z"/>
+              <path d="M10 10h4"/>
+            </svg>
+            <span data-i18n="feature2">Barco Tradicional</span>
+          </div>
+          <div class="feature-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 11V6a2 2 0 0 1 2-2h3"/>
+              <path d="M20 11V6a2 2 0 0 0-2-2h-3"/>
+              <path d="M8 14a4 4 0 1 0 8 0c0-1.5-1-2.5-2-3.5S12 8.5 12 7c0 1.5-1 2.5-2 3.5S8 12.5 8 14Z"/>
+              <path d="M12 18v4"/>
+            </svg>
+            <span data-i18n="feature3">Permitido Animal de Companhia</span>
+          </div>
+          <div class="feature-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 21h8"/>
+              <path d="M12 17v4"/>
+              <path d="M7 4h10l-1 7a4 4 0 0 1-4 3 4 4 0 0 1-4-3L7 4Z"/>
+            </svg>
+            <span data-i18n="feature4">Degustação de Vinho do Porto</span>
+          </div>
+          <div class="feature-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 3"/>
+            </svg>
+            <span data-i18n="feature5">Reserva Online Disponível</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secção de reserva -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2 data-i18n="reserveTitle">Reserve agora o seu Passeio no Porto</h2>
+          <p data-i18n="reserveText">A melhor forma de explorar a incrível região do Porto e as suas deslumbrantes paisagens é fazendo um inesquecível passeio ao longo das águas do Rio Douro, seja em passeios de grupos, passeios em família, amigos, festas de aniversário, despedidas de solteiro, etc...</p>
+        </div>
+
+        <div class="cards">
+          <!-- Passeio 1 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Imagem temporária de paisagem do Porto para o passeio" width="1200" height="800" loading="lazy">
+            <div class="card-body">
+              <h3 data-i18n="cardTitle1">Texto a alterar brevemente</h3>
+              <p data-i18n="cardText1">Descubra o encanto do Porto e das suas pontes magníficas. Aprecie a paisagem deslumbrante e inesquecível no nosso Barco e crie memórias que durarão para toda a vida.</p>
+              <div class="meta">
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 7v5l3 3"/>
+                  </svg>
+                  <span data-i18n="duration">120 min</span>
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span data-i18n="location">Porto</span>
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18"/>
+                    <path d="m9 6-6 6 6 6"/>
+                    <path d="m15 18 6-6-6-6"/>
+                  </svg>
+                  <span data-i18n="roundTrip">Ida e Volta</span>
+                </span>
+              </div>
+
+              <div class="price-row">
+                <div class="price">
+                  <small data-i18n="priceLabel">A partir de</small>
+                  <strong>€ 30,00</strong>
+                </div>
+                <a class="link-btn" href="#reserva" data-i18n="bookHere">RESERVE AQUI</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Passeio 2 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Imagem temporária repetida para o segundo passeio" width="1200" height="800" loading="lazy">
+            <div class="card-body">
+              <h3 data-i18n="cardTitle2">Texto a alterar brevemente</h3>
+              <p data-i18n="cardText2">Descubra o encanto do Porto e das suas pontes magníficas. Aprecie a paisagem deslumbrante e inesquecível no nosso Barco e crie memórias que durarão para toda a vida.</p>
+              <div class="meta">
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 7v5l3 3"/>
+                  </svg>
+                  <span data-i18n="duration">120 min</span>
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span data-i18n="location">Porto</span>
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18"/>
+                    <path d="m9 6-6 6 6 6"/>
+                    <path d="m15 18 6-6-6-6"/>
+                  </svg>
+                  <span data-i18n="roundTrip">Ida e Volta</span>
+                </span>
+              </div>
+
+              <div class="price-row">
+                <div class="price">
+                  <small data-i18n="priceLabel">A partir de</small>
+                  <strong>€ 30,00</strong>
+                </div>
+                <a class="link-btn" href="#reserva" data-i18n="bookHere">RESERVE AQUI</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2 data-i18n="galleryTitle">Galeria</h2>
+        </div>
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Paisagem temporária do Porto com ponte" width="1200" height="800" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Vista temporária de ponte no Porto" width="1200" height="800" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=80" alt="Paisagem temporária repetida do Porto" width="1200" height="800" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Vista temporária repetida de ponte no Porto" width="1200" height="800" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário -->
+    <section class="section" id="reserva">
+      <div class="container contact-wrap">
+        <div class="contact-image">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="Imagem temporária da secção de contacto" width="1200" height="1400" loading="lazy">
+        </div>
+        <div class="contact-card">
+          <h2 data-i18n="formTitle">Reserve agora o seu passeio</h2>
+          <p class="form-intro" data-i18n="formText">Diga-nos o que pretende!</p>
+
+          <form id="contactForm" action="https://formsubmit.co/lostsoul1966@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Pedido de reserva - THULLIUM SAILBOAT">
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="nome" data-i18n="labelName">Nome</label>
+                <input id="nome" name="Nome" type="text" placeholder="O seu nome" data-i18n-placeholder="phName" required>
+              </div>
+              <div class="field">
+                <label for="email" data-i18n="labelEmail">Email</label>
+                <input id="email" name="Email" type="email" placeholder="O seu email" data-i18n-placeholder="phEmail" required>
+              </div>
+              <div class="field">
+                <label for="contacto" data-i18n="labelPhone">Contacto</label>
+                <input id="contacto" name="Contacto" type="text" placeholder="O seu contacto" data-i18n-placeholder="phPhone">
+              </div>
+              <div class="field">
+                <label for="assunto" data-i18n="labelSubject">Assunto</label>
+                <input id="assunto" name="Assunto" type="text" placeholder="Pedido de reserva" data-i18n-placeholder="phSubject">
+              </div>
+              <div class="field-full">
+                <label for="mensagem" data-i18n="labelMessage">Mensagem</label>
+                <textarea id="mensagem" name="Mensagem" placeholder="Escreva aqui a sua mensagem" data-i18n-placeholder="phMessage" required></textarea>
+              </div>
+            </div>
+
+            <label class="checkbox" for="politica">
+              <input id="politica" name="Política de privacidade aceite" type="checkbox" required>
+              <span data-i18n="privacy">Li e aceito a política de privacidade.</span>
+            </label>
+
+            <button class="submit-btn" type="submit" data-i18n="submitBtn">ENVIAR MENSAGEM</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="contact-box">
+        <h3 data-i18n="contactsTitle">Contactos</h3>
+        <p data-i18n="contactLine1">Marina do Freixo</p>
+        <p data-i18n="contactLine2">Porto - Portugal</p>
+        <p>(+351) 916814696</p>
+        <p>
+          <a class="whatsapp-footer" href="https://wa.me/351916814696" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="#25D366" d="M16.04 3C9.4 3 4 8.4 4 15.03c0 2.59.76 4.99 2.08 7.02L4 29l7.16-2.03A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.6 28 14.97 28 8.34 22.68 3 16.04 3Z"/>
+              <path fill="#fff" d="M22.02 19.2c-.34-.17-2.01-1-2.32-1.12-.31-.11-.54-.17-.76.17-.23.34-.88 1.12-1.08 1.35-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.74-1.69-1.01-.9-1.69-2.01-1.89-2.35-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.02-.6-.09-.17-.76-1.83-1.04-2.51-.28-.67-.56-.58-.76-.58h-.65c-.23 0-.6.09-.91.43-.31.34-1.2 1.18-1.2 2.87 0 1.68 1.23 3.31 1.4 3.54.17.23 2.42 3.7 5.86 5.06.82.33 1.46.53 1.96.67.82.26 1.57.22 2.16.13.66-.1 2.01-.82 2.29-1.61.28-.79.28-1.47.2-1.61-.08-.14-.31-.23-.65-.4Z"/>
+            </svg>
+            <span>916814696</span>
+          </a>
+        </p>
+        <p><a href="mailto:lostsoul1966@gmail.com">lostsoul1966@gmail.com</a></p>
+      </div>
+
+      <div class="legal">
+        <p data-i18n="legal1">Em cumprimento da lei nº 144/2015 informamos que para a resolução de conflitos de consumo deve ser contactada a comissão arbitral do Turismo de Portugal <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.</p>
+        <p data-i18n="legal2">Operador Marítimo Turístico com Licença RNAAT 203/2026 autorizada pelo Turismo de Portugal.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Traduções e troca de idioma -->
+  <script>
+    const translations = {
+      pt: {
+        reserveBtn: 'Reservar',
+        eyebrow: 'Passeios diários',
+        heroSubText: 'Passeios no Douro',
+        heroP1: 'Diariamente: Descubra o Encanto do Douro!',
+        heroP2: 'O Alto Douro Vinhateiro, classificado como Património da Humanidade pela UNESCO, ostenta mais de dois milénios de história na produção vinícola, dando origem ao mundialmente reconhecido Vinho do Porto.',
+        heroP3: 'Com 30 anos de história e experiência, convidamo-lo a explorar a grandiosidade desta região a bordo do nosso barco encantador e viva uma experiência inesquecível!',
+        heroBadge: 'Experiências pensadas para famílias, grupos de amigos e momentos especiais no Douro.',
+        feature1: 'Á descoberta do Porto e Douro',
+        feature2: 'Barco Tradicional',
+        feature3: 'Permitido Animal de Companhia',
+        feature4: 'Degustação de Vinho do Porto',
+        feature5: 'Reserva Online Disponível',
+        reserveTitle: 'Reserve agora o seu Passeio no Porto',
+        reserveText: 'A melhor forma de explorar a incrível região do Porto e as suas deslumbrantes paisagens é fazendo um inesquecível passeio ao longo das águas do Rio Douro, seja em passeios de grupos, passeios em família, amigos, festas de aniversário, despedidas de solteiro, etc...',
+        cardTitle1: 'Texto a alterar brevemente',
+        cardTitle2: 'Texto a alterar brevemente',
+        cardText1: 'Descubra o encanto do Porto e das suas pontes magníficas. Aprecie a paisagem deslumbrante e inesquecível no nosso Barco e crie memórias que durarão para toda a vida.',
+        cardText2: 'Descubra o encanto do Porto e das suas pontes magníficas. Aprecie a paisagem deslumbrante e inesquecível no nosso Barco e crie memórias que durarão para toda a vida.',
+        duration: '120 min',
+        location: 'Porto',
+        roundTrip: 'Ida e Volta',
+        priceLabel: 'A partir de',
+        bookHere: 'RESERVE AQUI',
+        galleryTitle: 'Galeria',
+        formTitle: 'Reserve agora o seu passeio',
+        formText: 'Diga-nos o que pretende!',
+        labelName: 'Nome',
+        labelEmail: 'Email',
+        labelPhone: 'Contacto',
+        labelSubject: 'Assunto',
+        labelMessage: 'Mensagem',
+        phName: 'O seu nome',
+        phEmail: 'O seu email',
+        phPhone: 'O seu contacto',
+        phSubject: 'Pedido de reserva',
+        phMessage: 'Escreva aqui a sua mensagem',
+        privacy: 'Li e aceito a política de privacidade.',
+        submitBtn: 'ENVIAR MENSAGEM',
+        contactsTitle: 'Contactos',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'Em cumprimento da lei nº 144/2015 informamos que para a resolução de conflitos de consumo deve ser contactada a comissão arbitral do Turismo de Portugal <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Operador Marítimo Turístico com Licença RNAAT 203/2026 autorizada pelo Turismo de Portugal.'
+      },
+      es: {
+        reserveBtn: 'Reservar',
+        eyebrow: 'Paseos diarios',
+        heroSubText: 'Paseos por el Duero',
+        heroP1: 'A diario: ¡Descubra el encanto del Duero!',
+        heroP2: 'El Alto Duero Vinhateiro, clasificado como Patrimonio de la Humanidad por la UNESCO, presume de más de dos mil años de historia en la producción vinícola, dando origen al mundialmente conocido vino de Oporto.',
+        heroP3: 'Con 30 años de historia y experiencia, le invitamos a explorar la grandeza de esta región a bordo de nuestro encantador barco y vivir una experiencia inolvidable.',
+        heroBadge: 'Experiencias pensadas para familias, grupos de amigos y momentos especiales en el Duero.',
+        feature1: 'Descubra Oporto y el Duero',
+        feature2: 'Barco tradicional',
+        feature3: 'Se permiten mascotas',
+        feature4: 'Degustación de vino de Oporto',
+        feature5: 'Reserva online disponible',
+        reserveTitle: 'Reserve ahora su paseo en Oporto',
+        reserveText: 'La mejor manera de explorar la increíble región de Oporto y sus deslumbrantes paisajes es realizando un inolvidable paseo por las aguas del río Duero, ya sea en grupos, en familia, con amigos, fiestas de cumpleaños, despedidas de soltero, etc.',
+        cardTitle1: 'Texto que se modificará en breve',
+        cardTitle2: 'Texto que se modificará en breve',
+        cardText1: 'Descubra el encanto de Oporto y de sus magníficos puentes. Disfrute del paisaje deslumbrante e inolvidable en nuestro barco y cree recuerdos para toda la vida.',
+        cardText2: 'Descubra el encanto de Oporto y de sus magníficos puentes. Disfrute del paisaje deslumbrante e inolvidable en nuestro barco y cree recuerdos para toda la vida.',
+        duration: '120 min',
+        location: 'Oporto',
+        roundTrip: 'Ida y vuelta',
+        priceLabel: 'Desde',
+        bookHere: 'RESERVE AQUÍ',
+        galleryTitle: 'Galería',
+        formTitle: 'Reserve ahora su paseo',
+        formText: '¡Cuéntenos qué desea!',
+        labelName: 'Nombre',
+        labelEmail: 'Correo electrónico',
+        labelPhone: 'Contacto',
+        labelSubject: 'Asunto',
+        labelMessage: 'Mensaje',
+        phName: 'Su nombre',
+        phEmail: 'Su correo electrónico',
+        phPhone: 'Su contacto',
+        phSubject: 'Solicitud de reserva',
+        phMessage: 'Escriba aquí su mensaje',
+        privacy: 'He leído y acepto la política de privacidad.',
+        submitBtn: 'ENVIAR MENSAJE',
+        contactsTitle: 'Contactos',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Oporto - Portugal',
+        legal1: 'En cumplimiento de la ley nº 144/2015 informamos de que para la resolución de conflictos de consumo debe contactarse con la comisión arbitral de Turismo de Portugal <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Operador marítimo turístico con licencia RNAAT 203/2026 autorizada por Turismo de Portugal.'
+      },
+      fr: {
+        reserveBtn: 'Réserver',
+        eyebrow: 'Croisières quotidiennes',
+        heroSubText: 'Balades sur le Douro',
+        heroP1: 'Chaque jour : découvrez le charme du Douro !',
+        heroP2: 'Le Haut-Douro viticole, classé au patrimoine mondial de l’UNESCO, possède plus de deux millénaires d’histoire dans la production de vin, à l’origine du célèbre vin de Porto.',
+        heroP3: 'Avec 30 ans d’histoire et d’expérience, nous vous invitons à explorer la grandeur de cette région à bord de notre bateau plein de charme et à vivre une expérience inoubliable.',
+        heroBadge: 'Des expériences pensées pour les familles, les groupes d’amis et les moments spéciaux sur le Douro.',
+        feature1: 'À la découverte de Porto et du Douro',
+        feature2: 'Bateau traditionnel',
+        feature3: 'Animaux autorisés',
+        feature4: 'Dégustation de vin de Porto',
+        feature5: 'Réservation en ligne disponible',
+        reserveTitle: 'Réservez dès maintenant votre balade à Porto',
+        reserveText: 'La meilleure façon de découvrir l’incroyable région de Porto et ses paysages magnifiques est de faire une balade inoubliable sur les eaux du Douro, en groupe, en famille, entre amis, pour un anniversaire, un enterrement de vie de célibataire, etc.',
+        cardTitle1: 'Texte à modifier prochainement',
+        cardTitle2: 'Texte à modifier prochainement',
+        cardText1: 'Découvrez le charme de Porto et de ses magnifiques ponts. Admirez un paysage superbe et inoubliable à bord de notre bateau et créez des souvenirs pour toute la vie.',
+        cardText2: 'Découvrez le charme de Porto et de ses magnifiques ponts. Admirez un paysage superbe et inoubliable à bord de notre bateau et créez des souvenirs pour toute la vie.',
+        duration: '120 min',
+        location: 'Porto',
+        roundTrip: 'Aller-retour',
+        priceLabel: 'À partir de',
+        bookHere: 'RÉSERVER ICI',
+        galleryTitle: 'Galerie',
+        formTitle: 'Réservez dès maintenant votre balade',
+        formText: 'Dites-nous ce que vous souhaitez !',
+        labelName: 'Nom',
+        labelEmail: 'Email',
+        labelPhone: 'Contact',
+        labelSubject: 'Sujet',
+        labelMessage: 'Message',
+        phName: 'Votre nom',
+        phEmail: 'Votre email',
+        phPhone: 'Votre contact',
+        phSubject: 'Demande de réservation',
+        phMessage: 'Écrivez votre message ici',
+        privacy: 'J’ai lu et j’accepte la politique de confidentialité.',
+        submitBtn: 'ENVOYER LE MESSAGE',
+        contactsTitle: 'Contacts',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'Conformément à la loi nº 144/2015, nous informons que pour la résolution des litiges de consommation, la commission arbitrale de Turismo de Portugal doit être contactée <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Opérateur maritime touristique avec licence RNAAT 203/2026 autorisée par Turismo de Portugal.'
+      },
+      en: {
+        reserveBtn: 'Book now',
+        eyebrow: 'Daily cruises',
+        heroSubText: 'Douro boat tours',
+        heroP1: 'Every day: discover the charm of the Douro!',
+        heroP2: 'The Alto Douro Wine Region, classified as a UNESCO World Heritage Site, boasts more than two millennia of wine-making history and gave birth to the world-famous Port Wine.',
+        heroP3: 'With 30 years of history and experience, we invite you to explore the grandeur of this region aboard our charming boat and enjoy an unforgettable experience.',
+        heroBadge: 'Experiences designed for families, groups of friends and special moments on the Douro.',
+        feature1: 'Discover Porto and the Douro',
+        feature2: 'Traditional boat',
+        feature3: 'Pets allowed',
+        feature4: 'Port wine tasting',
+        feature5: 'Online booking available',
+        reserveTitle: 'Book your Porto tour now',
+        reserveText: 'The best way to explore the incredible Porto region and its stunning landscapes is by taking an unforgettable trip along the waters of the Douro River, whether for groups, families, friends, birthday parties, bachelor or bachelorette events, and more.',
+        cardTitle1: 'Text to be updated soon',
+        cardTitle2: 'Text to be updated soon',
+        cardText1: 'Discover the charm of Porto and its magnificent bridges. Enjoy the breathtaking and unforgettable scenery on our boat and create memories that will last a lifetime.',
+        cardText2: 'Discover the charm of Porto and its magnificent bridges. Enjoy the breathtaking and unforgettable scenery on our boat and create memories that will last a lifetime.',
+        duration: '120 min',
+        location: 'Porto',
+        roundTrip: 'Round trip',
+        priceLabel: 'From',
+        bookHere: 'BOOK HERE',
+        galleryTitle: 'Gallery',
+        formTitle: 'Book your tour now',
+        formText: 'Tell us what you are looking for!',
+        labelName: 'Name',
+        labelEmail: 'Email',
+        labelPhone: 'Phone',
+        labelSubject: 'Subject',
+        labelMessage: 'Message',
+        phName: 'Your name',
+        phEmail: 'Your email',
+        phPhone: 'Your phone',
+        phSubject: 'Booking request',
+        phMessage: 'Write your message here',
+        privacy: 'I have read and accept the privacy policy.',
+        submitBtn: 'SEND MESSAGE',
+        contactsTitle: 'Contacts',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'In compliance with law no. 144/2015, we inform you that for consumer dispute resolution the arbitration commission of Turismo de Portugal should be contacted at <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Tourist maritime operator with RNAAT license 203/2026 authorized by Turismo de Portugal.'
+      },
+      de: {
+        reserveBtn: 'Jetzt buchen',
+        eyebrow: 'Tägliche Fahrten',
+        heroSubText: 'Douro-Bootstouren',
+        heroP1: 'Täglich: Entdecken Sie den Charme des Douro!',
+        heroP2: 'Das Weinbaugebiet Alto Douro, das von der UNESCO zum Weltkulturerbe erklärt wurde, blickt auf mehr als zwei Jahrtausende Weintradition zurück und ist die Heimat des weltberühmten Portweins.',
+        heroP3: 'Mit 30 Jahren Geschichte und Erfahrung laden wir Sie ein, die Größe dieser Region an Bord unseres charmanten Bootes zu entdecken und ein unvergessliches Erlebnis zu genießen.',
+        heroBadge: 'Erlebnisse für Familien, Freundesgruppen und besondere Momente auf dem Douro.',
+        feature1: 'Porto und den Douro entdecken',
+        feature2: 'Traditionelles Boot',
+        feature3: 'Haustiere erlaubt',
+        feature4: 'Portwein-Verkostung',
+        feature5: 'Online-Reservierung verfügbar',
+        reserveTitle: 'Buchen Sie jetzt Ihre Fahrt in Porto',
+        reserveText: 'Die beste Art, die unglaubliche Region Porto und ihre atemberaubenden Landschaften zu entdecken, ist eine unvergessliche Fahrt auf dem Douro, ob in Gruppen, mit der Familie, mit Freunden, bei Geburtstagsfeiern, Junggesellenabschieden und mehr.',
+        cardTitle1: 'Text wird in Kürze angepasst',
+        cardTitle2: 'Text wird in Kürze angepasst',
+        cardText1: 'Entdecken Sie den Charme von Porto und seine großartigen Brücken. Genießen Sie die beeindruckende und unvergessliche Landschaft an Bord unseres Bootes und schaffen Sie Erinnerungen fürs Leben.',
+        cardText2: 'Entdecken Sie den Charme von Porto und seine großartigen Brücken. Genießen Sie die beeindruckende und unvergessliche Landschaft an Bord unseres Bootes und schaffen Sie Erinnerungen fürs Leben.',
+        duration: '120 Min.',
+        location: 'Porto',
+        roundTrip: 'Hin und zurück',
+        priceLabel: 'Ab',
+        bookHere: 'HIER BUCHEN',
+        galleryTitle: 'Galerie',
+        formTitle: 'Buchen Sie jetzt Ihre Fahrt',
+        formText: 'Sagen Sie uns, was Sie sich wünschen!',
+        labelName: 'Name',
+        labelEmail: 'E-Mail',
+        labelPhone: 'Kontakt',
+        labelSubject: 'Betreff',
+        labelMessage: 'Nachricht',
+        phName: 'Ihr Name',
+        phEmail: 'Ihre E-Mail',
+        phPhone: 'Ihr Kontakt',
+        phSubject: 'Buchungsanfrage',
+        phMessage: 'Schreiben Sie hier Ihre Nachricht',
+        privacy: 'Ich habe die Datenschutzrichtlinie gelesen und akzeptiere sie.',
+        submitBtn: 'NACHRICHT SENDEN',
+        contactsTitle: 'Kontakte',
+        contactLine1: 'Marina do Freixo',
+        contactLine2: 'Porto - Portugal',
+        legal1: 'Gemäß Gesetz Nr. 144/2015 informieren wir darüber, dass zur Beilegung von Verbraucherstreitigkeiten die Schiedskommission von Turismo de Portugal kontaktiert werden sollte: <a href="https://www.turismodeportugal.pt" target="_blank" rel="noopener noreferrer">www.turismodeportugal.pt</a>.',
+        legal2: 'Touristischer Schifffahrtsbetreiber mit RNAAT-Lizenz 203/2026, genehmigt von Turismo de Portugal.'
+      }
+    };
+
+    const langButtons = document.querySelectorAll('.lang-btn');
+
+    function setLanguage(lang) {
+      const data = translations[lang] || translations.pt;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (data[key] !== undefined) {
+          el.innerHTML = data[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (data[key] !== undefined) el.setAttribute('placeholder', data[key]);
+      });
+
+      langButtons.forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.lang === lang)
+      );
+    }
+
+    langButtons.forEach(btn =>
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang))
+    );
+  </script>
+</body>
+</html>
